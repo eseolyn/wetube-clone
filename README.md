@@ -15,13 +15,12 @@ what sort of data we use.
 /search ->Search
 ==> global routers
 
-/user/edit -> Edit User
-/user/delete -> Delete User
+/users/:id -> See User
+/users/logout -> Log Out
+/users/edit -> Edit My Profile
+/users/delete -> Delete My Profile
 
-/video/watch -> Watch Video
-/video/edit -> Edit Video
-/video/delete -> Delete Video
-/video/comments -> Comment on a Video
-/video/comments/delete ->Delete a Comment of a Video
-
-Routers allowed us to group URL based on the subject that we art working on.
+/videos/:id -> See Video
+/videos/:id/edit -> Edit Video
+/videos/:id/delete -> Delete Video
+/videos/upload -> Upload Video
