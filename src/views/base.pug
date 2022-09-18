@@ -2,14 +2,24 @@ doctype html
 html(lang="ko")
     head
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
-        title #{pageTitle} | Wetube
+        title #{pageTitle} | #{siteName}
     body 
         header
             h1=pageTitle
+            if loggedIn
+                a(href='/') #{loggedInUser.name}'s profile
             nav
                 ul
                     li 
                         a(href='/') Home
+                    if loggedIn 
+                        li 
+                            a(href='/logout') Log Out
+                    else
+                        li 
+                            a(href='/join') Join
+                        li 
+                            a(href='/login') Login
                     li
                         a(href='/videos/upload') Upload Video
                     li 
