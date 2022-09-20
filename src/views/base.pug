@@ -7,21 +7,23 @@ html(lang="ko")
         header
             h1=pageTitle
             if loggedIn
-                a(href='/') #{loggedInUser.name}'s profile
+                a(href='/users/edit') #{loggedInUser.name}'s profile
             nav
                 ul
                     li 
                         a(href='/') Home
                     if loggedIn 
                         li 
-                            a(href='users/logout') Log Out
+                            a(href='/users/logout') Log Out
+                        li 
+                            a(href='/users/edit') Edit Profile
+                        li
+                            a(href='/videos/upload') Upload Video
                     else
                         li 
                             a(href='/join') Join
                         li 
                             a(href='/login') Login
-                    li
-                        a(href='/videos/upload') Upload Video
                     li 
                         a(href='/search') Search
         main
