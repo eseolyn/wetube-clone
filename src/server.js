@@ -28,7 +28,9 @@ app.use(
 );
 
 app.use(localsMiddleware);
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads")); // all in the expression!! attention it!!!
+app.use("/static", express.static("assets")); // all in the expression!! attention it!!!
+// tell to server, put the contents of the uploads&assets folder accessible through /static url.
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
