@@ -23,6 +23,10 @@ export const publicOnlyMiddleware = (req, res, next) => {
   }
 };
 
+// export const notFoundMiddleware=(req,res,next)=>{
+//   return res.status(404).render('404',{pageTitle:'Page not found.'})
+// }
+
 export const avatarUpload = multer({
   dest: "uploads/avatars/",
   limits: {
@@ -32,6 +36,6 @@ export const avatarUpload = multer({
 export const videoUpload = multer({
   dest: "uploads/videos/",
   limits: {
-    fileSize: 10000000,
+    fileSize: 12000000,
   },
 });

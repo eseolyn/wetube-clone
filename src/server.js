@@ -34,5 +34,6 @@ app.use("/static", express.static("assets")); // all in the expression!! attenti
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
+// app.use(notFoundMiddleware);
 
 export default app;

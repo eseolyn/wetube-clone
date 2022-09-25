@@ -22,6 +22,7 @@ userRouter
   .all(protectorMiddleware)
   .get(getChangePassword)
   .post(postChangePassword);
-userRouter.get(":id([0-9a-f]{24})", see);
+
+userRouter.get("/:id([0-9a-f]{24})", see);
 
 export default userRouter;

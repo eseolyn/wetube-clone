@@ -8,7 +8,7 @@ html(lang="ko")
         header
             h1=pageTitle
             if loggedIn
-                a(href='/users/edit') #{loggedInUser.name}'s profile
+                a(href=`/users/${loggedInUser._id}`) My profile
             nav
                 ul
                     li 
