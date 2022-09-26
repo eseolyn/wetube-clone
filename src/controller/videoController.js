@@ -1,26 +1,6 @@
 import Video from "../models/Video";
 import User from "../models/User";
 
-/* 
-callback function:
-Video.find({}, (error, videos) => {
-  if(error){
-    return res.render('server-error')
-  }
-  return res.render("home", { pageTitle: "Home", videos: [] });
-});
-
-async & await:
-export const home = async (req, res) => {
-  try {
-    const videos = await Video.find({}); // JS will wait here until finish finding DB
-    return res.render("home", { pageTitle: "Home", videos }); // when success find DB
-  } catch { // when occur error while find DB
-    return res.render("server-error");
-  }
-};
-*/
-
 export const home = async (req, res) => {
   const videos = await Video.find({})
     .sort({ createdAt: "desc" })
@@ -129,7 +109,7 @@ export const search = async (req, res) => {
       title: {
         $regex: new RegExp(keyword, "i"),
       },
-    });
+    }).populate("owner");
   }
   return res.render("search", { pageTitle: "Search", videos });
 };
