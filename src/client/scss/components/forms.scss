@@ -7,7 +7,7 @@ form {
   border: 1px solid rgba(#fff, 0.2);
 }
 
-input:not(input[type="range"]) {
+input:not([type="range"]) {
   all: unset;
   padding: 15px 20px;
   border-radius: 7px;
@@ -26,7 +26,7 @@ input[type="submit"],
 .social__btn {
   border-radius: 7px;
   padding: 13px 20px;
-  background-color: rgba($red, 0.9);
+  background-color: rgba($red, 1);
   text-align: center;
   cursor: pointer;
   display: block;
