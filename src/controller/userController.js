@@ -62,7 +62,9 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 export const logout = (req, res) => {
-  req.session.destroy();
+  req.session.user = null;
+  res.locals.loggedInUser = req.session.user;
+  req.session.loggedIn = false;
   return res.redirect("/");
 };
 
@@ -107,6 +109,7 @@ export const postEdit = async (req, res) => {
 
 export const getChangePassword = (req, res) => {
   // if(req.session.user.socialOnly === true){
+  //   req.flash("error", "Can't change password");
   //  return res.redirect('/')
   // }
   // if so many code above, time to create 'passwordUsersOnlyMiddleware'
@@ -135,6 +138,7 @@ export const postChangePassword = async (req, res) => {
   }
   user.password = newPassword;
   user.save(); //hash the newPassword in UserModels.
+  req.flash("info", "Password updated");
   return res.redirect("/users/logout");
 };
 
