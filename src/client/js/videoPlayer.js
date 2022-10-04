@@ -11,6 +11,7 @@ const fullScreenBtn = document.getElementById("fullScreen");
 const fullScreenIcon = fullScreenBtn.querySelector("i");
 const videoContainer = document.getElementById("videoContainer");
 const videoControls = document.getElementById("videoControls");
+const commentArea = document.getElementById("commentArea");
 
 let controlsTimeoutID = null;
 let controlsMovementTimeout = null;
@@ -111,6 +112,9 @@ const handleMouseLeave = () => {
 };
 
 const handleShortcutKey = (event) => {
+  if (event.target.id === "commentArea") {
+    return;
+  }
   if (event.key === " ") {
     handlePlayClick();
   }
@@ -123,6 +127,11 @@ const handleShortcutKey = (event) => {
     fullScreenIcon.classList = "fas fa-expand";
   }
 };
+// const handlePressSpace = async (event) => {
+// if (event.target === document.body && event.code === "Space") {
+//   await handlePlayVideo();
+//   }
+// };
 
 const handleEnded = () => {
   const { id } = videoContainer.dataset;

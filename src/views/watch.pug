@@ -1,7 +1,7 @@
 extends base.pug
 
 block content 
-    div#videoContainer(data-videoId=video._id)
+    div#videoContainer(data-Id=video._id)
         video(src='/'+video.fileUrl)
         div#videoControls.videoControls
             div.videoControls__play
@@ -19,7 +19,6 @@ block content
             div
                 span#fullScreen
                     i.fas.fa-expand
-
     div
         p=video.description
         small=video.createdAt
@@ -31,6 +30,21 @@ block content
         br
         a(href=`${video.id}/delete`) Delete Video &rarr;
 
+    if loggedIn
+        div.video__add-comments
+            form.video__comment-form#commentForm
+                textarea(cols='30', rows='10', placeholder='Write a nice comment...')#commentArea
+                button Add Comment
+    div.video__comments
+        ul 
+            each comment in video.comments.reverse() 
+                li.video__comment
+                    i.fas.fa-comment
+                    |  #{comment.text}
+            //- can do this cause populate('comments')
+
 block scripts 
     script(src="/static/js/videoPlayer.js")
+    //- if loggedIn
+    script(src="/static/js/commentSection.js")
     //- /static url can access assets folder.
