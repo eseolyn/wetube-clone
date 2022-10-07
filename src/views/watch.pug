@@ -44,13 +44,6 @@ block content
                     span #{comment.text}
                     span ❌
                     
-                //- CodeChallenge! click X-button, delete comment
-                //- if clicked, fetch request
-                //- need to create API route & controller
-                //- check the owner of the comment
-                //- only the owner can see X-button in own comments. use pug ..owner._id === loggedInUser._id
-                //- in backend, check who that send request === owner of comment
-                //- fetch request method:'DELETE',,, router.delete('fetch-url',fn)
 
 block scripts 
     script(src="/static/js/videoPlayer.js")
