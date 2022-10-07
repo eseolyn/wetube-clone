@@ -1,7 +1,7 @@
 extends base.pug
 
 block content 
-    div#videoContainer(data-Id=video._id)
+    div#videoContainer(data-id=video._id)
         video(src='/'+video.fileUrl)
         div#videoControls.videoControls
             div.videoControls__play
@@ -33,15 +33,24 @@ block content
     if loggedIn
         div.video__add-comments
             form.video__comment-form#commentForm
-                textarea(cols='30', rows='10', placeholder='Write a nice comment...')#commentArea
+                textarea(cols='40', rows='8', placeholder='Write a nice comment...')#commentArea
                 button Add Comment
     div.video__comments
         ul 
-            each comment in video.comments.reverse() 
-                li.video__comment
-                    i.fas.fa-comment
-                    |  #{comment.text}
             //- can do this cause populate('comments')
+            each comment in video.comments.reverse() 
+                li.video__comment(data-id=comment.id)
+                    i.fas.fa-comment
+                    span #{comment.text}
+                    span ❌
+                    
+                //- CodeChallenge! click X-button, delete comment
+                //- if clicked, fetch request
+                //- need to create API route & controller
+                //- check the owner of the comment
+                //- only the owner can see X-button in own comments. use pug ..owner._id === loggedInUser._id
+                //- in backend, check who that send request === owner of comment
+                //- fetch request method:'DELETE',,, router.delete('fetch-url',fn)
 
 block scripts 
     script(src="/static/js/videoPlayer.js")
